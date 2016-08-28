@@ -1,0 +1,11 @@
+""" Global configurations
+"""
+
+USER = 'Optimus'
+WIT_AI_KEY = ''
+RECORD_DURATION = 7
+SENSIBILITE_SNOWBOY = 0.4
+NIVEAU_CONFIDENCE = 0.6
+ECHANTILLON_SILENCE = 1.0
+
+
