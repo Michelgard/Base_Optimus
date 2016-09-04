@@ -6,7 +6,7 @@ from snowboy.Snowboy import Snowboy
 import os
 import signal
 import sys
-import config
+import pickle
 
 #Fonction appelée quand vient l'heure de fermer notre programme
 def fermer_programme(signal, frame):
@@ -14,9 +14,10 @@ def fermer_programme(signal, frame):
     
 # Connexion du signal à notre fonction
 signal.signal(signal.SIGINT, fermer_programme)
-    
-sensibiliteSnowboy = config.SENSIBILITE_SNOWBOY
-duration = config.RECORD_DURATION
+
+config_recupere = fonction.lectureConfig()
+sensibiliteSnowboy = config_recupere["SENSIBILITE_SNOWBOY"]
+duration = config_recupere["RECORD_DURATION"]
 
 fonction.play("Bonjour-je-suis-Optimus.wav") #message au lancement de l'appli 
 

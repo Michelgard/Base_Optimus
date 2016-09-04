@@ -2,7 +2,6 @@
 #-*- coding: utf-8 -*-
 
 import json
-import config
 import speech_recognition as sr
 import time
 import pygame
@@ -10,10 +9,20 @@ import subprocess
 import os
 import signal
 import sys
+import MySQLdb
+import pickle
 
-WIT_AI_KEY = config.WIT_AI_KEY
-niveauConfidence = config.NIVEAU_CONFIDENCE
-echantillonSilence = config.ECHANTILLON_SILENCE
+def lectureConfig():
+    with open('donnees', 'rb') as fichier:
+        mon_depickler = pickle.Unpickler(fichier)
+        config_recupere = mon_depickler.load()
+        return config_recupere
+
+config_recupere = lectureConfig()
+
+WIT_AI_KEY = config_recupere["WIT_AI_KEY"]
+niveauConfidence = config_recupere["NIVEAU_CONFIDENCE"]
+echantillonSilence = config_recupere["ECHANTILLON_SILENCE"]
 commande = None
 
 #Fonction appelée quand vient l'heure de fermer notre programme
